@@ -1,0 +1,7 @@
+build/
+*.exe
+.cache/
+.cmake/
+.qt/
+.qtc_clangd/
+.qtcreator/
