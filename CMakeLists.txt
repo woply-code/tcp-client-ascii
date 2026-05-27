@@ -14,9 +14,15 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets Network)
 add_executable(${PROJECT_NAME}
     WIN32
     src/main.cpp
+    src/RoleSelectionWindow.cpp
+    src/RoleSelectionWindow.h
+    src/RoleSelectionWindow.ui
     src/TcpClientWindow.cpp
     src/TcpClientWindow.h
     src/TcpClientWindow.ui
+    src/TcpServerWindow.cpp
+    src/TcpServerWindow.h
+    src/TcpServerWindow.ui
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets Qt6::Network)

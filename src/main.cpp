@@ -1,11 +1,12 @@
-#include "TcpClientWindow.h"
+#include "RoleSelectionWindow.h"
 #include <QApplication>
 
+// 程序入口：初始化应用并显示角色选择页。
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    TcpClientWindow window;
+    RoleSelectionWindow window;
     window.show();
 
     return app.exec();

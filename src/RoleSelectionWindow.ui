@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RoleSelectionWindow</class>
+ <widget class="QWidget" name="RoleSelectionWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>920</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>920</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>TCP 启动选择</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                stop:0 #eef5ff, stop:0.58 #f7fbff, stop:1 #ecf7f1);
+}
+QFrame#panel {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(122, 146, 184, 0.18);
+    border-radius: 26px;
+}
+QFrame#clientCard, QFrame#serverCard {
+    background: #fbfdff;
+    border: 1px solid #d7e4f2;
+    border-radius: 22px;
+}
+QFrame#clientCard:hover, QFrame#serverCard:hover {
+    border: 1px solid #94b8f4;
+    background: #ffffff;
+}
+QLabel#eyebrowLabel {
+    color: #214f95;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 rgba(233, 242, 255, 0.96),
+                                stop:1 rgba(221, 239, 255, 0.96));
+    border: 1px solid #bfd5f5;
+    border-radius: 16px;
+    padding: 6px 18px;
+}
+QLabel#clientTitleLabel, QLabel#serverTitleLabel {
+    color: #16314f;
+    font-size: 24px;
+    font-weight: 700;
+}
+QLabel#clientDescLabel, QLabel#serverDescLabel {
+    color: #5f7287;
+    font-size: 13px;
+}
+QLabel#clientTagLabel, QLabel#serverTagLabel {
+    color: #3f6cb7;
+    background: #eaf2ff;
+    border: 1px solid #cadeff;
+    border-radius: 12px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+QPushButton {
+    min-height: 42px;
+    border-radius: 14px;
+    padding: 0 18px;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+}
+QPushButton#clientButton {
+    color: white;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #3d7cff, stop:1 #6ea6ff);
+}
+QPushButton#clientButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #2f70f0, stop:1 #629cf2);
+}
+QPushButton#serverButton {
+    color: #1f7a46;
+    background: #e8f6ee;
+    border: 1px solid #b8e1c7;
+}
+QPushButton#serverButton:hover {
+    background: #dcf1e4;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>36</number>
+   </property>
+   <property name="topMargin">
+    <number>34</number>
+   </property>
+   <property name="rightMargin">
+    <number>36</number>
+   </property>
+   <property name="bottomMargin">
+    <number>34</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="panel">
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <layout class="QVBoxLayout" name="panelLayout">
+      <property name="spacing">
+       <number>26</number>
+      </property>
+      <property name="leftMargin">
+       <number>32</number>
+      </property>
+      <property name="topMargin">
+       <number>30</number>
+      </property>
+      <property name="rightMargin">
+       <number>32</number>
+      </property>
+      <property name="bottomMargin">
+       <number>30</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="eyebrowLabel">
+        <property name="minimumSize">
+         <size>
+          <width>164</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>220</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TCP TOOLKIT</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Policy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="cardsLayout">
+        <property name="spacing">
+         <number>18</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="clientCard">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <layout class="QVBoxLayout" name="clientCardLayout">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <property name="leftMargin">
+            <number>24</number>
+           </property>
+           <property name="topMargin">
+            <number>24</number>
+           </property>
+           <property name="rightMargin">
+            <number>24</number>
+           </property>
+           <property name="bottomMargin">
+            <number>24</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="clientTagLabel">
+             <property name="text">
+              <string>主动发起连接</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="clientTitleLabel">
+             <property name="text">
+              <string>客户端</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="clientDescLabel">
+             <property name="text">
+              <string>输入目标 IP 和端口，作为连接发起方进入独立客户端界面。</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="clientVerticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="clientButton">
+             <property name="text">
+              <string>进入客户端</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="serverCard">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <layout class="QVBoxLayout" name="serverCardLayout">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <property name="leftMargin">
+            <number>24</number>
+           </property>
+           <property name="topMargin">
+            <number>24</number>
+           </property>
+           <property name="rightMargin">
+            <number>24</number>
+           </property>
+           <property name="bottomMargin">
+            <number>24</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="serverTagLabel">
+             <property name="text">
+              <string>监听并等待接入</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serverTitleLabel">
+             <property name="text">
+              <string>服务端</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serverDescLabel">
+             <property name="text">
+              <string>监听本机端口，作为被连接方进入独立服务端界面。</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="serverVerticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="serverButton">
+             <property name="text">
+              <string>进入服务端</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
