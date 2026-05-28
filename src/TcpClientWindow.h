@@ -21,8 +21,13 @@ private slots:
     void onSocketConnected();
     void onSocketDisconnected();
     void onSocketErrorOccurred();
+    void on_openButton_clicked();
+    void on_closeButton_clicked();
+    void on_sendButton_clicked();
 
 private:
+    bool ensureSocketConnected();
+    QByteArray buildSendPayload(bool *ok, QString *errorMessage) const;
     void updateConnectButton();
     void updateStatus(const QString &text);
     void updateStatusStyle(const QString &state);

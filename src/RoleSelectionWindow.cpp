@@ -11,7 +11,7 @@ RoleSelectionWindow::RoleSelectionWindow(QWidget *parent)
       serverWindow(nullptr)
 {
     ui->setupUi(this);
-    setFixedSize(920, 560);
+    setFixedSize(1200, 700);
 }
 
 // 释放选择窗口的界面资源。

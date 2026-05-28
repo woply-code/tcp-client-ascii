@@ -16,7 +16,7 @@ TcpServerWindow::TcpServerWindow(QWidget *parent)
       clientSocket(nullptr)
 {
     ui->setupUi(this);
-    setFixedSize(920, 560);
+    setFixedSize(1200, 700);
 
     ui->portLineEdit->setValidator(new QIntValidator(0, 65535, this));
 

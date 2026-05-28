@@ -5,3 +5,4 @@ build/
 .qt/
 .qtc_clangd/
 .qtcreator/
+*.autosave

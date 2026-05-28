@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>TcpClientWindow</class>
  <widget class="QMainWindow" name="TcpClientWindow">
@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>920</width>
-    <height>560</height>
+    <width>1200</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>920</width>
-    <height>560</height>
+    <width>1200</width>
+    <height>700</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>920</width>
-    <height>560</height>
+    <width>1200</width>
+    <height>729</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -82,6 +82,47 @@ QLineEdit:focus {
     border: 1px solid #5b8def;
     background: #fdfefe;
 }
+QComboBox {
+    min-height: 38px;
+    border: 1px solid #c9d8e8;
+    border-radius: 10px;
+    background: white;
+    padding: 0 12px;
+    color: #183153;
+}
+QComboBox:focus {
+    border: 1px solid #5b8def;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 28px;
+}
+QTabWidget::pane {
+    border: 1px solid #d9e4f0;
+    border-radius: 14px;
+    top: -1px;
+    background: #ffffff;
+}
+QTabBar::tab {
+    min-height: 38px;
+    min-width: 120px;
+    padding: 0 18px;
+    margin-right: 8px;
+    border: 1px solid #d1dceb;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background: #eef3f9;
+    color: #54708f;
+    font-weight: 700;
+}
+QTabBar::tab:selected {
+    background: #ffffff;
+    color: #225fc1;
+    border-color: #bfd3f9;
+}
+QTabBar::tab:hover:!selected {
+    background: #e5edf7;
+}
 QPushButton {
     min-height: 40px;
     border-radius: 12px;
@@ -98,6 +139,14 @@ QPushButton#connectButton {
 QPushButton#connectButton:hover {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
                                 stop:0 #2f70f0, stop:1 #5b98f0);
+}
+QPushButton#sendButton {
+    background-color: #eff5ff;
+    color: #225fc1;
+    border: 1px solid #bfd3f9;
+}
+QPushButton#sendButton:hover {
+    background-color: #e3eeff;
 }
 QPushButton#openButton {
     background-color: #e8f6ee;
@@ -195,11 +244,11 @@ QLabel#statusLabel[state=&quot;error&quot;] {
         <height>30</height>
        </size>
       </property>
-      <property name="text">
-       <string>←</string>
-      </property>
       <property name="toolTip">
        <string>返回选择</string>
+      </property>
+      <property name="text">
+       <string>←</string>
       </property>
      </widget>
     </item>
@@ -236,7 +285,7 @@ QLabel#statusLabel[state=&quot;error&quot;] {
          <item>
           <widget class="QLabel" name="subtitleLabel">
            <property name="text">
-            <string>主动连接目标主机，查看客户端连接状态。</string>
+            <string>主动连接目标主机，并在客户端操作区发送文本或原始字节。</string>
            </property>
           </widget>
          </item>
@@ -245,7 +294,7 @@ QLabel#statusLabel[state=&quot;error&quot;] {
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -310,6 +359,23 @@ QLabel#statusLabel[state=&quot;error&quot;] {
           <property name="verticalSpacing">
            <number>12</number>
           </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="ipLabel">
+            <property name="text">
+             <string>目标 IP</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLineEdit" name="portLineEdit">
+            <property name="text">
+             <string>8888</string>
+            </property>
+            <property name="placeholderText">
+             <string>请输入目标端口</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="4">
            <widget class="QPushButton" name="connectButton">
             <property name="minimumSize">
@@ -323,13 +389,6 @@ QLabel#statusLabel[state=&quot;error&quot;] {
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="ipLabel">
-            <property name="text">
-             <string>目标 IP</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="2">
            <widget class="QLabel" name="portLabel">
             <property name="text">
@@ -339,21 +398,11 @@ QLabel#statusLabel[state=&quot;error&quot;] {
           </item>
           <item row="0" column="1">
            <widget class="QLineEdit" name="ipLineEdit">
-            <property name="placeholderText">
-             <string>请输入目标主机 IP</string>
-            </property>
             <property name="text">
              <string>127.0.0.1</string>
             </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLineEdit" name="portLineEdit">
             <property name="placeholderText">
-             <string>请输入目标端口</string>
-            </property>
-            <property name="text">
-             <string>8888</string>
+             <string>请输入目标主机 IP</string>
             </property>
            </widget>
           </item>
@@ -365,77 +414,239 @@ QLabel#statusLabel[state=&quot;error&quot;] {
          <property name="title">
           <string>客户端操作区</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="spacing">
-           <number>12</number>
+           <number>14</number>
           </property>
           <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+           <widget class="QTabWidget" name="controlTabWidget">
+            <property name="tabPosition">
+             <enum>QTabWidget::TabPosition::North</enum>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
+            <property name="currentIndex">
+             <number>1</number>
             </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="openButton">
-            <property name="minimumSize">
-             <size>
-              <width>140</width>
-              <height>42</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>打开</string>
-            </property>
+            <widget class="QWidget" name="commandTab">
+             <attribute name="title">
+              <string>打开/关闭</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <property name="leftMargin">
+               <number>20</number>
+              </property>
+              <property name="topMargin">
+               <number>20</number>
+              </property>
+              <property name="rightMargin">
+               <number>20</number>
+              </property>
+              <property name="bottomMargin">
+               <number>20</number>
+              </property>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <property name="spacing">
+                 <number>16</number>
+                </property>
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="openButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>180</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>打开</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Policy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>200</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="closeButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>180</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>关闭</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="sendTab">
+             <attribute name="title">
+              <string>文本发送</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="spacing">
+               <number>14</number>
+              </property>
+              <property name="leftMargin">
+               <number>20</number>
+              </property>
+              <property name="topMargin">
+               <number>20</number>
+              </property>
+              <property name="rightMargin">
+               <number>20</number>
+              </property>
+              <property name="bottomMargin">
+               <number>20</number>
+              </property>
+              <item>
+               <widget class="QLineEdit" name="sendLineEdit">
+                <property name="placeholderText">
+                 <string>请输入要发送的内容，Hex 模式可输入如 48 65 6C 6C 6F</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <item>
+                 <widget class="QComboBox" name="encodingComboBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>UTF-8</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Hex</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>US-ASCII</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="sendButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>发送</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
            </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_back">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>80</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="closeButton">
-            <property name="minimumSize">
-             <size>
-              <width>140</width>
-              <height>42</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>关闭</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </widget>
@@ -473,8 +684,8 @@ QLabel#statusLabel[state=&quot;error&quot;] {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>920</width>
-     <height>21</height>
+     <width>1200</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
